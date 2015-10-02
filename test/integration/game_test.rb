@@ -3,21 +3,21 @@ require 'minitest/mock'
 
 class GamesTest < ActionDispatch::IntegrationTest
   test "new game returns the correct response code" do
-    skip
+
     post '/games', params: { difficulty: 0 }
 
     assert_response 201
   end
 
   test "new game returns the correct headers" do
-    skip
+
     post '/games', params: { difficulty: 0 }
 
     assert_match %r{application/json}, response.headers["Content-Type"]
   end
 
   test "new easy game returns the correct body" do
-    skip
+
     post '/games', params: { difficulty: 0 }
 
     json = JSON.parse(response.body)
@@ -32,7 +32,7 @@ class GamesTest < ActionDispatch::IntegrationTest
   end
 
   test "new intermediate game returns the correct body" do
-    skip
+
     post '/games', params: { difficulty: 1 }
 
     json = JSON.parse(response.body)
@@ -47,7 +47,6 @@ class GamesTest < ActionDispatch::IntegrationTest
   end
 
   test "new expert game returns the correct body" do
-    skip
     post '/games', params: { difficulty: 2 }
 
     json = JSON.parse(response.body)
@@ -62,7 +61,7 @@ class GamesTest < ActionDispatch::IntegrationTest
   end
 
   test "checking a square" do
-    skip
+
     post '/games', params: {difficulty: 0}
     json = JSON.parse(response.body)
     board_id = json["id"]
@@ -84,7 +83,7 @@ class GamesTest < ActionDispatch::IntegrationTest
   end
 
   test "getting a board in play" do
-    skip
+
     post '/games', params: {difficulty: 0}
     json = JSON.parse(response.body)
     board_id = json["id"]
@@ -108,7 +107,7 @@ class GamesTest < ActionDispatch::IntegrationTest
   end
 
   test "flagging a square" do
-    skip
+
     post '/games', params: {difficulty: 0}
     json = JSON.parse(response.body)
     board_id = json["id"]
@@ -124,7 +123,7 @@ class GamesTest < ActionDispatch::IntegrationTest
   end
 
   test "winning" do
-    skip
+
     all_spaces = []
     8.times{ |row| 8.times { |col| all_spaces << [row,col] } }
 
@@ -155,7 +154,7 @@ class GamesTest < ActionDispatch::IntegrationTest
   end
 
   test "losing" do
-    skip
+    
     all_spaces = []
     8.times{ |row| 8.times { |col| all_spaces << [row,col] } }
 

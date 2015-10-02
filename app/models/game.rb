@@ -16,12 +16,10 @@ class Game < ActiveRecord::Base
   def place_mines(row, col)
     self.state = "playing"
 
-    #
-    # YOUR CODE GOES HERE TO PLACE THE RIGHT NUMBER OF BOMBS
-    #
-    # self.mine_locations = ...
+    mines_number = [10,40,99][difficulty]
+    array = (0..(size - 1)).to_a
+     self.mine_locations = mines_number.times.map { 2.times.map { array.sample } }
   end
-
   def flag(row, col)
     board[row][col] = FLAG
   end
