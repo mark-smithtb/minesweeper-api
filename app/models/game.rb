@@ -18,7 +18,7 @@ class Game < ActiveRecord::Base
 
     mines_number = [10,40,99][difficulty]
     array = (0..(size - 1)).to_a
-     self.mine_locations = mines_number.times.map { 2.times.map { array.sample } }
+     self.mine_locations = mines_number.times.map { array.sample(2).uniq} 
   end
   def flag(row, col)
     board[row][col] = FLAG
